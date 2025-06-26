@@ -15,6 +15,6 @@ if __name__ == '__main__':
     print(__name__)
     print(__doc__)
     print('Start tutorial_01')
-    Tut01.ModuleName()
+    #Tut01.ModuleName()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
