@@ -1,5 +1,6 @@
 # Objects are Python's abstraction for data. All data in a Python program is
 # represented by objects or by relations between objects.
+# https://docs.python.org/release/3.13.5/reference/datamodel.html
 from numbers import Number
 from types import NoneType
 
