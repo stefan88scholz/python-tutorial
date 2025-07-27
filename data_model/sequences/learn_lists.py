@@ -5,6 +5,7 @@
 # https://docs.python.org/3.13/reference/datamodel.html#mutable-sequences
 from typing import Callable
 from functools import wraps
+from learntypes import learnclass
 
 def function_name(func: Callable) -> Callable:
     @wraps(func)
@@ -15,21 +16,10 @@ def function_name(func: Callable) -> Callable:
 
     return print_name
 
-class City:
-    def __init__(self, name: str, country: str) -> None:
-        self.name: str = name
-        self.country: str = country
-
-    def __repr__(self) -> str:
-        return f'{self.name} ({self.country})'
-
-    def __eq__(self, other) -> bool:
-        return self.name == other.name and self.country == other.country
-
-
 my_list_int: list[int] = [0, 1, 2, 3, 4, 5,]
 my_list_str: list[str] = ['apple', 'pear', 'cherry', 'apricot', 'grape', 'banana']
-my_list_cities: list[City] = [City('Munich', 'Germany'), City('Rom', 'Italy')]
+my_list_cities: list[learnclass.City] = [learnclass.City('Munich', 'Germany'),
+                                         learnclass.City('Rom', 'Italy')]
 
 @function_name
 def print_lists() -> None:
@@ -64,8 +54,8 @@ def list_slicing() -> None:
 
 @function_name
 def common_sequence_ops() -> None:
-    rom = City('Rom','Italy')
-    madrid = City('Madrid', 'Spain')
+    rom : learnclass = learnclass.City('Rom','Italy')
+    madrid : learnclass = learnclass.City('Madrid', 'Spain')
 
     print(f'Is Rom part of list of cities? ({rom in my_list_cities = })')
     print(f'Is Madrid NOT part of list of cities? ({madrid not in my_list_cities = })')
@@ -74,14 +64,14 @@ def common_sequence_ops() -> None:
 @function_name
 def add_remove_elements() -> None:
     #tmp_list_cities: list[City] = my_list_cities
-    madrid = City('Madrid', 'Spain')
-    london = City('London', 'England')
+    madrid = learnclass.City('Madrid', 'Spain')
+    london = learnclass.City('London', 'England')
     my_list_cities.append(madrid)
     my_list_cities.append(london)
     print(f'New cities {my_list_cities[-2]} and {my_list_cities[-1]} added:')
     print(my_list_cities)
     print('Remove city Munich')
-    my_list_cities.remove(City('Munich', 'Germany'))
+    my_list_cities.remove(learnclass.City('Munich', 'Germany'))
     print(my_list_cities)
     # Restore list
     #my_list_cities = tmp_list_cities
