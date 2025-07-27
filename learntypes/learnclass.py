@@ -16,12 +16,10 @@ class City:
 
     def __format__(self, format_spec: str) -> str:
         match format_spec:
-            case '!s':
-                return self.__str__()
-            case '!r':
-                return self.__repr__()
-            case '!a':
-                return ascii(self.__repr__())
+            case 'upper':
+                return self.__str__().upper()
+            case 'lower':
+                return self.__repr__().lower()
             case _:
                 return super().__format__(format_spec)
 
