@@ -3,31 +3,21 @@
 # https://docs.python.org/3/library/stdtypes.html#list
 # https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range
 # https://docs.python.org/3.13/reference/datamodel.html#mutable-sequences
-from typing import Callable
-from functools import wraps
+from functions.learndecorators import exec_func_info
 from learntypes import learnclass
-
-def function_name(func: Callable) -> Callable:
-    @wraps(func)
-    def print_name() -> None:
-        print(f'{'':-<100}')
-        print(f'You are in function {func.__name__}:')
-        func()
-
-    return print_name
 
 my_list_int: list[int] = [0, 1, 2, 3, 4, 5,]
 my_list_str: list[str] = ['apple', 'pear', 'cherry', 'apricot', 'grape', 'banana']
 my_list_cities: list[learnclass.City] = [learnclass.City('Munich', 'Germany'),
                                          learnclass.City('Rom', 'Italy')]
 
-@function_name
+@exec_func_info
 def print_lists() -> None:
     print(f'{my_list_int = }')
     print(f'{my_list_str = }')
     print(f'{my_list_cities = }')
 
-@function_name
+@exec_func_info
 def list_slicing() -> None:
     """
     Syntax:      [x:y::z]
@@ -52,7 +42,7 @@ def list_slicing() -> None:
     my_list_int[::2] = [0 , 0, 0]
     print(my_list_int)
 
-@function_name
+@exec_func_info
 def common_sequence_ops() -> None:
     rom : learnclass = learnclass.City('Rom','Italy')
     madrid : learnclass = learnclass.City('Madrid', 'Spain')
@@ -61,7 +51,7 @@ def common_sequence_ops() -> None:
     print(f'Is Madrid NOT part of list of cities? ({madrid not in my_list_cities = })')
     print(f'Is number 6 part of my_list_int? ({6 in my_list_int = })')
 
-@function_name
+@exec_func_info
 def add_remove_elements() -> None:
     #tmp_list_cities: list[City] = my_list_cities
     madrid = learnclass.City('Madrid', 'Spain')
@@ -76,11 +66,20 @@ def add_remove_elements() -> None:
     # Restore list
     #my_list_cities = tmp_list_cities
 
+@exec_func_info
+def list_of_methods() -> None:
+    i: int = 0
+    for method in dir(list):
+        if '__' not in method:
+            i += 1
+            print(i, method, sep=': ')
+
 def main() -> None:
-    print_lists()
-    list_slicing()
-    common_sequence_ops()
-    add_remove_elements()
+    list_of_methods()
+    #print_lists()
+    #list_slicing()
+    #common_sequence_ops()
+    #add_remove_elements()
 
 if __name__ == '__main__':
     main()

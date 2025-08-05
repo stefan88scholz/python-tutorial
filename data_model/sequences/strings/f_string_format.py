@@ -6,7 +6,9 @@
 
 from datetime import  datetime
 from learntypes import learnclass
+from functions.learndecorators import exec_func_info
 
+@exec_func_info
 def conversion() -> None:
     rom : learnclass.City = learnclass.City('Rom','Italy')
     print(f'{rom}') #returns City.__str__
@@ -24,7 +26,7 @@ def conversion() -> None:
     print(f'{text!r}')
     print(f'{text!a}')
 
-
+@exec_func_info
 def equal_sign() -> None:
     breakf: str = 'Breakfast starts at 6am and ends at 10am'
     print(f'{breakf = }')
@@ -35,7 +37,7 @@ def equal_sign() -> None:
 
 def main() -> None:
     conversion()
-    equal_sign()
+    #equal_sign()
 
 if __name__ == '__main__':
     main()
