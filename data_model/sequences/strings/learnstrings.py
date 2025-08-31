@@ -222,7 +222,7 @@ def string_operators() -> None:
         print(f'ERROR: {e}')
 
 @exec_func_info
-def list_of_methods() -> None:
+def content_of_str() -> None:
     i: int = 0
     for method in dir(str):
         if '__' not in method:
@@ -230,7 +230,7 @@ def list_of_methods() -> None:
             print(i, method, sep=': ')
 
 def main() -> None:
-    list_of_methods()
+    content_of_str()
     #method_capitalize_casefold()
     #method_center()
     #method_count()
@@ -241,7 +241,7 @@ def main() -> None:
     #method_format()
     #method_format_options()
     #method_index()
-    method_isalnum_isalpha_isascii_isdecimal_isdigit_isidentifier()
+    #method_isalnum_isalpha_isascii_isdecimal_isdigit_isidentifier()
     #string_operators()
     #string_iterable()
 

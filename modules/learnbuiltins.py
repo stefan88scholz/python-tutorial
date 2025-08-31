@@ -1,3 +1,5 @@
+#https://docs.python.org/3.13/library/functions.html#built-in-functions
+
 from functions.learndecorators import exec_func_info
 
 @exec_func_info
@@ -41,6 +43,7 @@ def method_iter_next_any_all() -> None:
     print(f'{all(my_list) = }')
     print(f'{all(zero_one_list) = }')
     print(f'{all(non_zero_list) = }')
+
 
 def main() -> None:
     method_ord_chr()

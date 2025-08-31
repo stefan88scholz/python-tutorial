@@ -5,11 +5,20 @@
 # https://docs.python.org/3.13/reference/datamodel.html#mutable-sequences
 from functions.learndecorators import exec_func_info
 from learntypes import learnclass
+import random
 
 my_list_int: list[int] = [0, 1, 2, 3, 4, 5,]
 my_list_str: list[str] = ['apple', 'pear', 'cherry', 'apricot', 'grape', 'banana']
 my_list_cities: list[learnclass.City] = [learnclass.City('Munich', 'Germany'),
                                          learnclass.City('Rom', 'Italy')]
+
+@exec_func_info
+def content_of_list() -> None:
+    i: int = 0
+    for method in dir(list):
+        if '__' not in method:
+            i += 1
+            print(i, method, sep=': ')
 
 @exec_func_info
 def print_lists() -> None:
@@ -32,6 +41,7 @@ def list_slicing() -> None:
     print(f'Last Index: {my_list_str[-1] = }')
     print(f'Index 1,2: {my_list_str[1:3] =}')
     print(f'Step size 2: {my_list_str[::2] =}')
+    print(f'Reverse list with slicing: {my_list_int[::-1] =}')
 
     my_slice = slice(2,6)
     print(f'Using slice object: {my_list_str[my_slice] =}')
@@ -67,19 +77,33 @@ def add_remove_elements() -> None:
     #my_list_cities = tmp_list_cities
 
 @exec_func_info
-def list_of_methods() -> None:
-    i: int = 0
-    for method in dir(list):
-        if '__' not in method:
-            i += 1
-            print(i, method, sep=': ')
+def sum_list_values() -> None:
+    tmp_list: list[int]  = random.sample(range(1,1000),300)
+    tmp_sum: int = 0
+    for idx,value in enumerate(tmp_list):
+        tmp_sum += value
+        print(f'sum[{idx}]= {tmp_sum}')
+        if idx == 200:
+            break
+    tmp_sum = 0
+    tmp_sum = sum([value for idx,value in enumerate(tmp_list) if idx <= 200])
+    print(tmp_sum)
+
+@exec_func_info
+def list_reverse() -> None:
+    list_nr = list(range(100))
+    print(f'{list_nr = }')
+    list_nr.reverse()
+    print(f'{list_nr = }')
 
 def main() -> None:
-    list_of_methods()
+    content_of_list()
     #print_lists()
-    #list_slicing()
+    list_slicing()
     #common_sequence_ops()
     #add_remove_elements()
+    sum_list_values()
+    #list_reverse()
 
 if __name__ == '__main__':
     main()
